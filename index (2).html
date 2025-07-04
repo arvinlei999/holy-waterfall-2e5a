@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IT Support - 个人主页</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+      transition: background-color 0.5s, color 0.5s;
+      text-align: center;
+      position: relative;
+    }
+
+    .overlay { display: none; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #222; color: #eee; }
+      .links a { color: #66ccff; }
+      .controls button, .resume-btn { background: #66ccff; color: #222; }
+    }
+
+    h1 { margin: 0; font-size: 2.5em; }
+    p { max-width: 600px; line-height: 1.5; margin-top: 10px; }
+
+    .links a {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      color: #0077cc;
+      font-size: 1.2em;
+    }
+
+    .controls button, .resume-btn {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 5px;
+      background: #0077cc;
+      color: white;
+      cursor: pointer;
+    }
+
+    .skills {
+      margin: 30px 0;
+      width: 80%;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    .skill-bar {
+      background: #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .skill-bar-fill {
+      background: #0077cc;
+      height: 20px;
+      width: 0;
+      border-radius: 5px;
+      transition: width 1.5s ease;
+    }
+
+    footer { margin: 30px 0; font-size: 0.9em; color: #999; }
+
+    #loading {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-size: 1.5em;
+    }
+
+    #modal { display: none; }
+
+    form {
+      width: 80%;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">加载中...</div>
+
+  <h1 id="name">IT Support</h1>
+  <p id="intro">👨‍💻 我是一名 IT Helpdesk，热爱科技技术，喜欢探索各种 IT 解决方案与新技术。</p >
+
+  <div class="links">
+    📧 邮箱
+    💬 微信
+    
+    
+    
+  </div>
+
+  <div class="controls">
+    <button onclick="toggleLanguage()">切换语言</button>
+  </div>
+
+  <div class="skills">
+    <h2>技能展示</h2>
+    <div><div>网络技术</div><div class="skill-bar"><div class="skill-bar-fill" style="width: 90%;"></div></div></div>
+    <div><div>系统运维</div><div class="skill-bar"><div class="skill-bar-fill" style="width: 85%;"></div></div></div>
+    <div><div>编程能力</div><div class="skill-bar"><div class="skill-bar-fill" style="width: 70%;"></div></div></div>
+  </div>
+
+  <a href="resume.pdf" class="resume-btn" download>📄 下载我的简历</a >
+
+  <form onsubmit="handleSubmit(event)">
+    <h2>留言表单</h2>
+    <input type="text" placeholder="姓名" required>
+    <input type="email" placeholder="邮箱" required>
+    <textarea rows="4" placeholder="留言内容" required></textarea>
+    <button type="submit" class="resume-btn">提交留言</button>
+  </form>
+
+  <footer>&copy; 2025 IT Support | 保持热爱，保持探索</footer>
+
+  <script>
+    window.onload = () => document.getElementById('loading').style.display = 'none';
+
+    let currentLang = 'zh';
+    function toggleLanguage() {
+      if (currentLang === 'zh') {
+        document.getElementById('name').innerText = 'IT Support';
+        document.getElementById('intro').innerText = "👨‍💻 I am an IT Helpdesk who loves technology and enjoys exploring IT solutions and new technologies.";
+        document.querySelector('.controls button').innerText = 'Switch Language';
+        currentLang = 'en';
+      } else {
+        document.getElementById('name').innerText = 'IT Support';
+        document.getElementById('intro').innerText = "👨‍💻 我是一名 IT Helpdesk，热爱科技技术，喜欢探索各种 IT 解决方案与新技术。";
+        document.querySelector('.controls button').innerText = '切换语言';
+        currentLang = 'zh';
+      }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('留言已提交（本地演示，未联网）');
+    }
+  </script>
+</body>
+</html>
